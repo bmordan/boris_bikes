@@ -15,6 +15,23 @@ describe BikeContainer  do
   	holder.dock(bike)
   	# now we expect the holder to have 1 bike
   	expect(holder.bike_count).to eq(1)
-	end
+  end
+
+  it "should throw an error if no bikes are there" do
+  	expect(holder.bike_count).to eq(0)
+  	expect( lambda {holder.release(bike)} ).to raise_error(RuntimeError)
+  end
+
+  it "should throw an error if no bike is passed" do
+  	3.times{holder.dock(bike)}
+  	expect(holder.bike_count).to eq(3)
+  	expect( lambda {holder.release()} ).to raise_error(ArgumentError)
+  end
+
+  it "should throw error if the argument is not a bike at all" do
+  	3.times{holder.dock(bike)}
+    bike = "James"
+    expect( lambda {holder.release(bike)}).to raise_error(RuntimeError)
+  end
 
 end

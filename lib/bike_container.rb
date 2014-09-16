@@ -19,6 +19,9 @@ module BikeContainer
     end
 
     def release(bike)
+      raise "Station is empty" if bike_count == 0
+      raise "No bike to be removed" if defined? bike == nil
+      raise "bike must be a real bike or Class" if bike.class != 'Bike'
       bikes.delete(bike)
     end
 
