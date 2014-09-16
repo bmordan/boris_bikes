@@ -12,4 +12,7 @@ class DockingStation
     	self.bike_count == 0 ? true : false
     end
 
+    def broken_bikes
+    	bikes.select { |bike| bike.broken? }
+    end
 end

@@ -22,4 +22,17 @@ describe DockingStation do
   it "docking station should let us know what bikes bikes are available" do
   	expect(station.available_bikes).to be_a(Array)
   end
+
+  it "should return to the van bikes that are broken" do
+  	3.times do 
+  	  bike = Bike.new
+  	  bike.break!
+  	  station.dock(bike)
+  	end
+  	2.times {station.dock(Bike.new)}
+    expect(station.bike_count).to eq(5)
+    expect( station.broken_bikes.all? {|bike| bike.broken? } ).to eq(true)
+  end
+
+
 end
