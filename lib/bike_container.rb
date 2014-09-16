@@ -15,12 +15,14 @@ module BikeContainer
     	
     def dock(bike)
       raise "Fuck the Station is full" if full?
-      bikes << bike
+      raise "No bike to be docked" if bike==nil
+     bikes << bike
+
     end
 
     def release(bike)
       raise "Station is empty" if bike_count == 0
-      raise "No bike to be removed" if defined? bike == nil
+      raise "No bike to be removed" if bike==nil
       raise "bike must be a real bike or Class" if bike.class != 'Bike'
       bikes.delete(bike)
     end

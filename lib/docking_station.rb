@@ -8,4 +8,8 @@ class DockingStation
     	self.capacity = options.fetch(:capacity, capacity)
     end
 
+    def empty?
+    	self.bike_count == 0 ? true : false
+    end
+
 end

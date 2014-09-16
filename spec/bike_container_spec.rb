@@ -34,4 +34,10 @@ describe BikeContainer  do
     expect( lambda {holder.release(bike)}).to raise_error(RuntimeError)
   end
 
+  it "Should throw an error if no (bike) is passed to dock()" do
+    expect( lambda {holder.dock()}).to raise_error(ArgumentError)
+  end
+
+
+
 end
